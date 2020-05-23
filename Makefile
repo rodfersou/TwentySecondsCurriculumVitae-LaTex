@@ -1,12 +1,9 @@
-# Makefile twentyseconds cv
-
-files_tex = $(wildcard *.tex)
-all: pdf
+all: build
 	@echo "Done!"
-pdf: *.tex
+build: src/*.tex
 	@echo "Building.... $^"
-	@$(foreach var,$(files_tex),pdflatex -interaction=nonstopmode '$(var)' 1>/dev/null;)
-	@$(foreach var,$(files_tex),convert -density 150 -trim -quality 100 -flatten -sharpen 0x1.0 '$(var:.tex=.pdf)' '$(var:.tex=.jpg)';)
+	(find src -name '*.tex' -exec sh -c 'pdflatex -interaction=nonstopmode "$$1" 1> /dev/null' _ {} \;)
+	(find src -name '*.pdf' -exec sh -c 'convert -density 150 -trim -quality 100 -flatten -sharpen 0x1.0 "$$1" "$${1%.pdf}.jpg"' _ {}  \;)
 clean:
-	@rm -f *.aux *.dvi *.log *.out *.bak
+	(cd src && rm -f *.aux *.dvi *.log *.out *.bak)
 	@echo "Clean done.";

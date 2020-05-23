@@ -36,7 +36,7 @@ Here's an examples:
 
 ##Toy Résumé
 ***
-![sample résumé](https://github.com/rodfersou/TwentySecondsCurriculumVitae-LaTex/raw/master/Curriculum_Vitae_en.jpg)
+![sample résumé](https://github.com/rodfersou/TwentySecondsCurriculumVitae-LaTex/raw/master/src/Curriculum_Vitae_en.jpg)
 ***
 
 # Build 
